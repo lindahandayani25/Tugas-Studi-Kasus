@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Toko Sembako</title>
+    <title>Grocery Store | Home</title>
 
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -23,75 +23,55 @@
 <body>
 
     <!-- Navigation -->
-    <header>
+    <header style="position:fixed; width:100%; z-index:2;">
 		<nav class="main-nav">
 			<div class="brand text-main">
-				<a href="#">
+				<a href="home.php">
 					<h1>Jaya.Abadi</h1>
 				</a>
 			</div>
-			<div class="links">
-				<ul>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contacts</a></li>
-					<li><a href="#">
-						<img src="front-end/assets/icons/search.svg" alt="search">
-					</a>
-					<input type="search" class="search">
-					</li>
+			<div>
+				<ul style="list-style-type:none; margin:0; padding:0; overflow:hidden;">
+					<li style="float:left;"><a class="text-main" href="home.php" style="display:block; padding: 14px 16px; text-decoration:none; color:#333;">Home</a></li>
+					<li style="float:left;"><a class="text-main" href="about.php" style="display:block; padding: 14px 16px; text-decoration:none; color:#333;">About</a></li>
 				</ul>
-			</div>
-			<div class="icon-for-user">
-				<a href="#">
-					<img src="front-end/assets/icons/person.svg" alt="person">
-				</a>
-				<a href="#">
-					<img src="front-end/assets/icons/shop-bag.svg" alt="person">
-				</a>
-			</div>
-			<div class="menu">
-				<img src="front-end/assets/icons/menu.svg" alt="menu">
 			</div>
 		</nav>
 	</header>
-    <!-- Navigation -->
+    <!-- End Navigation -->
 
-    <!-- Header-->
-    <header class="bg-info py-5">
-        <div class="container">
-			<div class="row justify-content-center align-items-center pad-tab" data-aos="fade-up">
-				<div class="banner-text col-sm-12 col-md-6">
-					<p class="text-white mb-3">Selamat datang di katalog toko sembako kami!</p>
-					<h1 class="text-main secondary-col mb-3">Koleksi Lengkap & Berkualitas
+	<!-- Home -->
+	<header>
+		<div class="bg-info">
+			<div class="home-background" style="background-image:url('img/banner.png'); background-size: cover; background-position:center; height:100vh; opacity:0.2; position:relative;"></div>
+			<div class="text-container" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);">
+				<div class="banner-text">
+					<p class="text-white mb-4" style="font-weight:bold;">Welcome to the Jaya Abadi grocery store catalog!</p>
+					<h1 class="text-main secondary-col mb-4">Complete & Quality Collection
 					</h1>
-					<p class="text-white">Segera jelajahidan nikmati kemudahan berbelanja sembako online</p>
-                    <a href="#" class="btn-rounded text-main">SHOP NOW</a>
-				</div>
-				<div class="banner-image col-sm-12 col-md-6 d-none d-sm-block">
-					<img src="front-end/assets/images/logo.png" alt="image-banner" class="img-fluid" width="500px">
+					<p class="text-white">Immediately explore and enjoy the convenience of online grocery shopping here!</p>
+					<a href="#product" class="btn-rounded text-main">SHOP NOW</a>
 				</div>
 			</div>
 		</div>
-    </header>
-
-    <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <h1 class="text-center mb-5">Daftar Produk</h1>
+	</header>
+	<!-- End Home -->
+	
+    <!-- Product -->
+    <section id="product" class="products-section py-5">
+        <div class="container mt-5">
+			<h1 class="text-main mb-3">Product List</h1>
+			<hr style="margin-bottom: 30px; height:3px">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                
-            <table>
-                <?php
+            	<?php
                     include 'koneksi.php';
-                    $query = mysqli_query($conn, "SELECT * FROM `produk` as p JOIN `kategori` as k ON p.kategori_id=k.id_kategori JOIN `harga` as h ON p.id_produk=h.produk_id;");
+                    $query = mysqli_query($conn, "SELECT * FROM `produk` as p JOIN `kategori` as k ON p.kategori_id=k.id_kategori JOIN `harga` as h ON p.id_produk=h.produk_id where id_produk=id_produk;");
                 ?>    
                 <tbody>
                     <?php 
                         if(mysqli_num_rows($query)>0){
                         while($data = mysqli_fetch_array($query)){
                     ?>
-                    
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
@@ -100,7 +80,7 @@
                                 <?php echo $data["status"] ?>
                             </div>
                             <!-- Product image-->
-                            <center><img class="card-item-top mt-2" src="img/<?php echo $data["gambar"] ?>" width="100"></center>
+                            <center><img class="card-item-top mt-2" src="img/<?php echo $data["gambar"] ?>" width="200"></center>
                             <!-- Product details-->
                             <div class="card-body card-body-custom pt-4">
                                 <div class="text-center">
@@ -112,15 +92,15 @@
                                     </div>
                                     <ul class="list-unstyled list-style-group">
                                         <li class="border-bottom p-2 d-flex justify-content-between">
-                                            <span>Nama :</span>
+                                            <span>Name :</span>
                                             <span style="font-weight: 600"><?php echo $data["nama_produk"] ?></span>
                                         </li>
                                         <li class="border-bottom p-2 d-flex justify-content-between">
-                                            <span>Kategori :</span>
+                                            <span>Category :</span>
                                             <span style="font-weight: 600"><?php echo $data["nama_kategori"] ?></span>
                                         </li>
                                         <li class="border-bottom p-2 d-flex justify-content-between">
-                                            <span>Stok :</span>
+                                            <span>Stock :</span>
                                             <span style="font-weight: 600"><?php echo $data["stok"] ?> &nbsp; <?php echo $data["satuan"] ?></span>
                                         </li>
                                     </ul>
@@ -129,8 +109,8 @@
                             <!-- Product actions-->
                             <div class="card-footer border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-primary mt-auto" href="https://api.whatsapp.com/send?phone=6281572858098&text=Hallo%20kak,%20%0Asaya%20mau%20pesan%20produk%20ini.">Beli</a>
-                                    <a class="btn btn-info mt-auto text-white" href="detail.php">Detail</a>
+                                    <a class="btn btn-primary mt-auto" href="https://api.whatsapp.com/send?phone=6281572858098&text=Hallo%20kak,%20%0Asaya%20mau%20pesan%20produk%20ini.">Buy</a>
+                                    <a class="btn btn-info mt-auto text-white" href="detail.php?id_produk=<?php echo $data["id_produk"] ?>">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -138,13 +118,12 @@
                     <?php } ?>
                     <?php } ?>
                 </tbody>
-            </table>
-
             </div>
         </div>
     </section>
-    <!-- End Section -->
+    <!-- End Product -->
 
+	<!-- Footer -->
     <footer class="bg-second">
 		<div class="container">
 			<div class="footer-content row mb-4">
@@ -160,9 +139,8 @@
 							<div>
 								<div class="footer-item-content">
 									<h3 class="text-main">Store</h3>
-									<p><a href="#">Categories</a></p>
-									<p><a href="#">About</a></p>
-									<p><a href="#">Contact</a></p>
+									<p><a href="home.php">Home</a></p>
+									<p><a href="about.php">About</a></p>
 								</div>
 							</div>
 						</div>
@@ -171,9 +149,9 @@
 							<div>
 								<div class="footer-item-content">
 									<h3 class="text-main">Business</h3>
-									<p><a href="#">Jayaabadi@gmail.com</a></p>
-									<p><a href="#">021-1234-5678</a></p>
-									<p><a href="#">Bandung</a></p>
+									<p>Jayaabadi@gmail.com</p>
+									<p>021-1234-5678</p>
+									<p>Bandung</p>
 								</div>
 							</div>
 						</div>
@@ -203,6 +181,7 @@
 			</div>
 		</div>
 	</footer>
+	<!-- End Footer -->
 
     <!-- Bootstrap core JS-->
     <script src="js/bootstrap.js"></script>

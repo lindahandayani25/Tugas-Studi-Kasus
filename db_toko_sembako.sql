@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 01:35 PM
+-- Generation Time: Nov 15, 2023 at 03:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -38,11 +38,10 @@ CREATE TABLE `detail_pemasok` (
 --
 
 INSERT INTO `detail_pemasok` (`id`, `produk_id`, `pemasok_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(4, 5, 2),
-(5, 3, 3),
-(6, 8, 2);
+(7, 1, 6),
+(8, 2, 2),
+(9, 3, 3),
+(10, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -65,7 +64,11 @@ INSERT INTO `harga` (`id_harga`, `produk_id`, `harga_beli`, `harga_jual`) VALUES
 (1, 1, 10500, 11000),
 (6, 2, 15900, 16500),
 (10, 4, 12800, 14000),
-(11, 6, 6500, 7000);
+(11, 6, 6500, 7000),
+(12, 5, 35000, 36000),
+(13, 8, 28000, 28500),
+(14, 3, 28000, 30000),
+(15, 48, 12000, 12500);
 
 -- --------------------------------------------------------
 
@@ -115,11 +118,11 @@ CREATE TABLE `pemasok` (
 --
 
 INSERT INTO `pemasok` (`id_pemasok`, `nama_pemasok`, `no_hp`, `alamat`) VALUES
-(1, 'Linda Handayani', '081572858098', 'Bandung'),
-(2, 'Pitri Sri Rahayu', '082181276607', 'Garut'),
-(3, 'Rapi Akbar', '082218662598', 'Surabaya'),
-(4, 'Karina', '084218362522', 'Jakarta'),
-(6, 'Dena Khoerunisa', '086683092811', 'Depok');
+(1, 'PT Jaya Tama', '(021) 5275 090', 'Bandung'),
+(2, 'PT Sejahtera', '(021) 4608 820', 'Garut'),
+(3, 'PT Barokah', '(021) 6591 166', 'Surabaya'),
+(4, 'PT Makmur ', '(021) 5835 521', 'Jakarta'),
+(6, 'Big Day Mart', '(021) 5455 809', 'Depok');
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,8 @@ INSERT INTO `produk` (`id_produk`, `kode_produk`, `nama_produk`, `kategori_id`, 
 (4, '0004', 'Ketan Hitam', 1, 'ketan hitam.jpg', 50, 'Kg', 'tersedia', 'Beras ketan hitam merupakan beras yang berwarna ungu pekat mendekati hitam dan mengandung senyawa fenolik yang tinggi terutama antosianin.'),
 (5, '0005', 'Gula Aren', 3, 'aren.jpg', 15, 'kg', 'tersedia', 'Gula aren adalah gula yang berasal dari cairan air nira.'),
 (6, '0006', 'Royco Ayam', 10, 'royco.png', 100, 'pcs', 'tersedia', 'Royco ayam adalah bumbu penyedap yang digunakan untuk menambah cita rasa gurih pada hidangan.'),
-(8, '0008', 'Telur Ayam', 9, 'telur-ayam.jpg', 30, 'Kg', 'tersedia', 'Telur ayam merupakan telur yang dihasilkan oleh ternak unggas ayam.');
+(8, '0008', 'Telur Ayam', 9, 'telur-ayam.jpg', 30, 'Kg', 'tersedia', 'Telur ayam merupakan telur yang dihasilkan oleh ternak unggas ayam.'),
+(48, '0008', 'Sarden ABC', 6, 'sarden.webp', 20, 'pcs', 'tersedia', 'Sarden ABC adalah makanan siap saji dari perpaduan ikan dengan saus lezat.');
 
 --
 -- Indexes for dumped tables
@@ -198,13 +202,13 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `detail_pemasok`
 --
 ALTER TABLE `detail_pemasok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `harga`
 --
 ALTER TABLE `harga`
-  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -222,7 +226,7 @@ ALTER TABLE `pemasok`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables
